@@ -15,9 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/category', function () {
-    return view('welcome');
-});
+Route::get('/category','Api\CategoryController@index');
 
 Route::get('/category/add', function () {
     return view('welcome');
