@@ -12,10 +12,14 @@ export class Index extends Component {
       <div>
         <Router>
           <div>
-            <Link to="/category">Listing</Link>
-            <Link to="/category/Add">Add</Link>
+            <Link to="/category" className="btn btn-primary mx-1 my-2">
+              Listing
+            </Link>
+            <Link to="/category/add" className="btn btn-primary mx-1 my-2">
+              Add
+            </Link>
             <Route exact={true} path="/category" component={Listing} />
-            <Route exact={true} path="/category/Add" component={Add} />
+            <Route exact={true} path="/category/add" component={Add} />
           </div>
         </Router>
       </div>

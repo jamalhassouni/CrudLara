@@ -63888,7 +63888,30 @@ function (_Component) {
   _createClass(Add, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "MY Add COMPONENT");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        for: "category_name"
+      }, "Category Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        class: "form-control",
+        id: "category_name",
+        placeholder: "Enter Category Name"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        class: "form-group form-check"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        for: "category_name"
+      }, "Category Status"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "checkbox",
+        class: "form-check-input",
+        id: "exampleCheck1"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        class: "form-check-label",
+        for: "exampleCheck1"
+      }, "Active")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        class: "btn btn-primary"
+      }, "Submit"));
     }
   }]);
 
@@ -63954,16 +63977,18 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/category"
+        to: "/category",
+        className: "btn btn-primary mx-1 my-2"
       }, "Listing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        to: "/category/Add"
+        to: "/category/add",
+        className: "btn btn-primary mx-1 my-2"
       }, "Add"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/category",
         component: _Listing__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
-        path: "/category/Add",
+        path: "/category/add",
         component: _Add__WEBPACK_IMPORTED_MODULE_2__["default"]
       }))));
     }
@@ -64024,7 +64049,25 @@ function (_Component) {
   _createClass(Listing, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "MY Listing COMPONENT");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
+        className: "table"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Category Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Status"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Created At"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Updated At"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Cat 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Acitve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Cat 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Acitve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "row"
+      }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Cat 3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Acitve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date"))));
     }
   }]);
 
