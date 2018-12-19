@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Validator;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
@@ -17,7 +18,7 @@ class CategoryController extends Controller
     {
         $result = Category::all();
 
-        return $result;
+        return response()->json($result);
     }
 
     /**
@@ -38,9 +39,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $category = new Category();
-        $category->name = $request->category_name;
-        $category->save();
+        $validator = Validator::make($request->all(), [
+           'category_name' => 'required|max:255',
+       ]);
+        if ($validator->fails()) {
+            return response(['type'=>'error','message'=>$validator->messages()]);
+        } else {
+            Category::create([
+            'name'=> $request->category_name,
+        ]);
+            return response(['type'=>'success','message'=>'Successfully added']);
+        }
     }
 
     /**
@@ -83,8 +92,13 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id = null)
     {
-        //
+        if ($id !=null) {
+            $category = Category::find($id);
+            $category->delete();
+            $data = Category::all();
+            return response(['type' => 'success','message'=>'The Category has successfully deleted','data'=>$data]);
+        }
     }
 }

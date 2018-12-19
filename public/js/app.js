@@ -63566,7 +63566,29 @@ function (_Component) {
   _createClass(Footer, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "this is footer");
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "footer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "ikonlar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "fab fa-facebook-f"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "fab fa-twitter"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "fab fa-linkedin"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "fab fa-instagram"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Copyright \xA9 2018. All rights reserved")))));
     }
   }]);
 
@@ -63636,9 +63658,9 @@ function (_Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
         className: "navbar navbar-expand-lg navbar-dark bg-dark"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "navbar-brand",
-        href: "#"
+        to: "/"
       }, "CrudLara"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "navbar-toggler",
         type: "button",
@@ -63690,7 +63712,6 @@ function (_Component) {
         path: "/about",
         component: _About__WEBPACK_IMPORTED_MODULE_3__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-        exact: true,
         path: "/category",
         component: _category_Index__WEBPACK_IMPORTED_MODULE_4__["default"]
       })));
@@ -63780,8 +63801,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./resources/assets/js/components/Header.js");
-/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Footer */ "./resources/assets/js/components/Footer.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./resources/assets/js/components/Header.js");
+/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Footer */ "./resources/assets/js/components/Footer.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -63799,6 +63821,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -63822,9 +63845,9 @@ function (_Component) {
   _createClass(Index, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
     }
   }]);
 
@@ -63882,16 +63905,18 @@ var Add =
 function (_Component) {
   _inherits(Add, _Component);
 
-  function Add() {
+  function Add(props) {
     var _this;
 
     _classCallCheck(this, Add);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Add).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Add).call(this, props));
     _this.onChangeCategoryName = _this.onChangeCategoryName.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.state = {
-      category_name: ""
+      category_name: "",
+      messages: {},
+      showError: false
     };
     return _this;
   }
@@ -63912,18 +63937,80 @@ function (_Component) {
   }, {
     key: "onSubmit",
     value: function onSubmit(e) {
+      var _this2 = this;
+
       e.preventDefault();
       var category = {
         category_name: this.state.category_name
       };
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("http://localhost:8000/category/store", category).then(function (res) {
-        return console.log(res.data);
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("http://localhost:8000/api/category/store", category).then(function (res) {
+        if (res.data.type === "success") {
+          _this2.setState({
+            showError: true,
+            category_name: "",
+            messages: res.data
+          });
+        } else {
+          _this2.setState({
+            showError: true,
+            messages: res.data
+          });
+        }
+      }).catch(function (err) {
+        console.log("err", err);
       });
+    } // handle on click close alert event
+
+  }, {
+    key: "handleClose",
+    value: function handleClose() {
+      this.setState({
+        showError: false
+      });
+    } // handle errors messages
+
+  }, {
+    key: "handleErrors",
+    value: function handleErrors() {
+      switch (this.state.messages.type) {
+        case "success":
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "alert alert-success ",
+            role: "alert"
+          }, this.state.messages.message, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: this.handleClose.bind(this),
+            type: "button",
+            className: "close",
+            "aria-label": "Close"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            "aria-hidden": "true"
+          }, "\xD7")));
+          break;
+
+        case "error":
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "alert alert-danger",
+            role: "alert"
+          }, this.state.messages.message.category_name.map(function (err) {
+            return err;
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: this.handleClose.bind(this),
+            type: "button",
+            className: "close",
+            "aria-label": "Close"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            "aria-hidden": "true"
+          }, "\xD7")));
+          break;
+
+        default:
+          return;
+      }
     }
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.showError && this.handleErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: this.onSubmit
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group"
@@ -63939,7 +64026,7 @@ function (_Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
-      }, "Submit"));
+      }, "Submit")));
     }
   }]);
 
@@ -64089,15 +64176,32 @@ function (_Component) {
       var _this2 = this;
 
       // Fetch data from api
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://localhost:8000/category/").then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://localhost:8000/api/category").then(function (response) {
         _this2.setState({
           categories: response.data
         });
       });
+    } // Delete category
+
+  }, {
+    key: "onDelete",
+    value: function onDelete(id) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.delete("http://localhost:8000/api/category/delete/".concat(id)).then(function (response) {
+        _this3.setState({
+          categories: response.data.data
+        });
+      });
     }
+  }, {
+    key: "onEdit",
+    value: function onEdit() {}
   }, {
     key: "render",
     value: function render() {
+      var _this4 = this;
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
         className: "table"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
@@ -64110,12 +64214,32 @@ function (_Component) {
         scope: "col"
       }, "Created At"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Updated At"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.categories.map(function (category, index) {
+      }, "Updated At"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+        scope: "col"
+      }, "Actions"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.categories.map(function (category, index) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
-          key: index
+          key: category.id
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
           scope: "row"
-        }, category.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.active == 1 ? "Active" : "Inactive"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.updated_at));
+        }, index + 1), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.active == 1 ? "Active" : "Inactive"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.updated_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          title: "delete",
+          className: "btn btn-danger mx-1 my-2",
+          onClick: _this4.onDelete.bind(_this4, category.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-times"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          title: "edit",
+          className: "btn btn-info mx-1 my-2",
+          onClick: _this4.onEdit.bind(_this4, category.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-edit"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          title: "view",
+          className: "btn btn-success mx-1 my-2",
+          onClick: _this4.onEdit.bind(_this4, category.id)
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "fa fa-eye"
+        }))));
       })));
     }
   }]);
