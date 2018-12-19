@@ -4,12 +4,14 @@ import axios from "axios";
  * Add
  */
 export class Add extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.onChangeCategoryName = this.onChangeCategoryName.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      category_name: ""
+      category_name: "",
+      messages: {},
+      showError: false
     };
   }
 
@@ -30,28 +32,92 @@ export class Add extends Component {
       category_name: this.state.category_name
     };
     axios
-      .post("http://localhost:8000/category/store", category)
-      .then(res => console.log(res.data));
+      .post("http://localhost:8000/api/category/store", category)
+      .then(res => {
+        if (res.data.type === "success") {
+          this.setState({
+            showError: true,
+            category_name: "",
+            messages: res.data
+          });
+        } else {
+          this.setState({
+            showError: true,
+            messages: res.data
+          });
+        }
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
   }
 
+  // handle on click close alert event
+  handleClose() {
+    this.setState({
+      showError: false
+    });
+  }
+  // handle errors messages
+  handleErrors() {
+    switch (this.state.messages.type) {
+      case "success":
+        return (
+          <div className="alert alert-success " role="alert">
+            {this.state.messages.message}
+            <button
+              onClick={this.handleClose.bind(this)}
+              type="button"
+              className="close"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        );
+        break;
+      case "error":
+        return (
+          <div className="alert alert-danger" role="alert">
+            {this.state.messages.message.category_name.map(err => {
+              return err;
+            })}
+            <button
+              onClick={this.handleClose.bind(this)}
+              type="button"
+              className="close"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        );
+        break;
+      default:
+        return;
+    }
+  }
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
-        <div className="form-group">
-          <label htmlFor="category_name">Category Name</label>
-          <input
-            onChange={this.onChangeCategoryName}
-            value={this.state.category_name}
-            type="text"
-            className="form-control"
-            id="category_name"
-            placeholder="Enter Category Name"
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
+      <div>
+        {this.state.showError && this.handleErrors()}
+        <form onSubmit={this.onSubmit}>
+          <div className="form-group">
+            <label htmlFor="category_name">Category Name</label>
+            <input
+              onChange={this.onChangeCategoryName}
+              value={this.state.category_name}
+              type="text"
+              className="form-control"
+              id="category_name"
+              placeholder="Enter Category Name"
+            />
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      </div>
     );
   }
 }
