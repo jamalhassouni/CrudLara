@@ -26,6 +26,7 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.6.1",
         "react-router-dom": "^4.3.1"
     }
 }
