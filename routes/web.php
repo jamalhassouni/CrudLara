@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/category','Api\CategoryController@index');
+Route::post('/category/store','Api\CategoryController@store');
 
 Route::get('/category/add', function () {
     return view('welcome');

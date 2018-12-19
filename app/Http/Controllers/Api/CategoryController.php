@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $result = Category::all();
-        
+
         return $result;
     }
 
@@ -38,7 +38,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request->category_name;
+        $category->save();
     }
 
     /**
