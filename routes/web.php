@@ -11,17 +11,4 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/category','Api\CategoryController@index');
-Route::post('/category/store','Api\CategoryController@store');
-
-Route::get('/category/add', function () {
-    return view('welcome');
-});
-
-Route::get('/about', function () {
-    return view('welcome');
-});
+Route::view('/{path?}', 'app');
