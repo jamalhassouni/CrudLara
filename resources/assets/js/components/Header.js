@@ -12,9 +12,9 @@ export default class Header extends Component {
       <Router>
         <div>
           <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand" href="#">
+            <Link className="navbar-brand" to="/">
               CrudLara
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -68,7 +68,7 @@ export default class Header extends Component {
 
           <Route exact={true} path="/" component={Home} />
           <Route exact={true} path="/about" component={About} />
-          <Route exact={true} path="/category" component={Category} />
+          <Route path="/category" component={Category} />
         </div>
       </Router>
     );
