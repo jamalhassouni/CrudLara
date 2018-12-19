@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -9,10 +10,12 @@ import Footer from "./Footer";
 export default class Index extends Component {
   render() {
     return (
-      <div className="container">
-        <Header />
-        <Footer />
-      </div>
+      <BrowserRouter>
+        <div className="container">
+          <Header />
+          <Footer />
+        </div>
+      </BrowserRouter>
     );
   }
 }
