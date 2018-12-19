@@ -1,9 +1,21 @@
 import React, { Component } from "react";
-
+import axios from "axios";
 /**
  * Listing
  */
 export class Listing extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      categories: []
+    };
+  }
+  componentDidMount() {
+    // Fetch data from api
+    axios.get("http://localhost:8000/category/").then(response => {
+      this.setState({ categories: response.data });
+    });
+  }
   render() {
     return (
       <table className="table">
@@ -17,27 +29,17 @@ export class Listing extends Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Cat 1</td>
-            <td>Acitve</td>
-            <td>date</td>
-            <td>date</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Cat 2</td>
-            <td>Acitve</td>
-            <td>date</td>
-            <td>date</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Cat 3</td>
-            <td>Acitve</td>
-            <td>date</td>
-            <td>date</td>
-          </tr>
+          {this.state.categories.map((category, index) => {
+            return (
+              <tr key={index}>
+                <th scope="row">{category.id}</th>
+                <td>{category.name}</td>
+                <td>{category.active == 1 ? "Active" : "Inactive"}</td>
+                <td>{category.created_at}</td>
+                <td>{category.updated_at}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     );

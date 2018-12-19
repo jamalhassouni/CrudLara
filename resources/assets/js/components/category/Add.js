@@ -7,23 +7,27 @@ export class Add extends Component {
   render() {
     return (
       <form>
-        <div class="form-group">
-          <label for="category_name">Category Name</label>
+        <div className="form-group">
+          <label htmlFor="category_name">Category Name</label>
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="category_name"
             placeholder="Enter Category Name"
           />
         </div>
-        <div class="form-group form-check">
-          <label for="category_name">Category Status</label>
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">
+        <div className="form-group form-check">
+          <label htmlFor="category_name">Category Status</label>
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="exampleCheck1"
+          />
+          <label className="form-check-label" htmlFor="exampleCheck1">
             Active
           </label>
         </div>
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>

@@ -63889,28 +63889,28 @@ function (_Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        class: "form-group"
+        className: "form-group"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "category_name"
+        htmlFor: "category_name"
       }, "Category Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
-        class: "form-control",
+        className: "form-control",
         id: "category_name",
         placeholder: "Enter Category Name"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        class: "form-group form-check"
+        className: "form-group form-check"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        for: "category_name"
+        htmlFor: "category_name"
       }, "Category Status"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "checkbox",
-        class: "form-check-input",
+        className: "form-check-input",
         id: "exampleCheck1"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-        class: "form-check-label",
-        for: "exampleCheck1"
+        className: "form-check-label",
+        htmlFor: "exampleCheck1"
       }, "Active")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
-        class: "btn btn-primary"
+        className: "btn btn-primary"
       }, "Submit"));
     }
   }]);
@@ -64012,6 +64012,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Listing", function() { return Listing; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64031,6 +64033,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
+
 /**
  * Listing
  */
@@ -64040,13 +64043,31 @@ var Listing =
 function (_Component) {
   _inherits(Listing, _Component);
 
-  function Listing() {
+  function Listing(props) {
+    var _this;
+
     _classCallCheck(this, Listing);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(Listing).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Listing).call(this, props));
+    _this.state = {
+      categories: []
+    };
+    return _this;
   }
 
   _createClass(Listing, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      // Fetch data from api
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://localhost:8000/category/").then(function (response) {
+        _this2.setState({
+          categories: response.data
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", {
@@ -64061,13 +64082,13 @@ function (_Component) {
         scope: "col"
       }, "Created At"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
         scope: "col"
-      }, "Updated At"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "row"
-      }, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Cat 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Acitve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "row"
-      }, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Cat 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Acitve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
-        scope: "row"
-      }, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Cat 3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Acitve"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "date"))));
+      }, "Updated At"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, this.state.categories.map(function (category, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", {
+          key: index
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", {
+          scope: "row"
+        }, category.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.active == 1 ? "Active" : "Inactive"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.created_at), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, category.updated_at));
+      })));
     }
   }]);
 
