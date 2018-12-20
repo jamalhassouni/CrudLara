@@ -64036,6 +64036,191 @@ function (_Component) {
 
 /***/ }),
 
+/***/ "./resources/assets/js/components/category/Edit.js":
+/*!*********************************************************!*\
+  !*** ./resources/assets/js/components/category/Edit.js ***!
+  \*********************************************************/
+/*! exports provided: Edit, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Edit", function() { return Edit; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+
+
+/**
+ * Edit
+ */
+
+var Edit =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Edit, _Component);
+
+  function Edit(props) {
+    var _this;
+
+    _classCallCheck(this, Edit);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Edit).call(this, props));
+    _this.onChangeCategoryName = _this.onChangeCategoryName.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.state = {
+      category_name: "",
+      messages: {},
+      showError: false
+    };
+    return _this;
+  }
+
+  _createClass(Edit, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      // Fetch data from api
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://localhost:8000/api/category/edit/".concat(this.props.match.params.id)).then(function (response) {
+        _this2.setState({
+          category_name: response.data.name
+        });
+      });
+    }
+    /**
+     * get value of category name input
+     * and update state
+     */
+
+  }, {
+    key: "onChangeCategoryName",
+    value: function onChangeCategoryName(e) {
+      this.setState({
+        category_name: e.target.value
+      });
+    } // handle on submit event
+
+  }, {
+    key: "onSubmit",
+    value: function onSubmit(e) {
+      var _this3 = this;
+
+      e.preventDefault();
+      var category = {
+        category_name: this.state.category_name
+      };
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("http://localhost:8000/api/category/update/".concat(this.props.match.params.id), category).then(function (res) {
+        if (res.data.type === "success") {
+          _this3.setState({
+            showError: true,
+            messages: res.data
+          });
+        } else {
+          _this3.setState({
+            showError: true,
+            messages: res.data
+          });
+        }
+      }).catch(function (err) {
+        console.log("err", err);
+      });
+    } // handle on click close alert event
+
+  }, {
+    key: "handleClose",
+    value: function handleClose() {
+      this.setState({
+        showError: false
+      });
+    } // handle errors messages
+
+  }, {
+    key: "handleErrors",
+    value: function handleErrors() {
+      switch (this.state.messages.type) {
+        case "success":
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "alert alert-success ",
+            role: "alert"
+          }, this.state.messages.message, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: this.handleClose.bind(this),
+            type: "button",
+            className: "close",
+            "aria-label": "Close"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            "aria-hidden": "true"
+          }, "\xD7")));
+          break;
+
+        case "error":
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+            className: "alert alert-danger",
+            role: "alert"
+          }, this.state.messages.message.category_name.map(function (err) {
+            return err;
+          }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            onClick: this.handleClose.bind(this),
+            type: "button",
+            className: "close",
+            "aria-label": "Close"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+            "aria-hidden": "true"
+          }, "\xD7")));
+          break;
+
+        default:
+          return;
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.state.showError && this.handleErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.onSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "category_name"
+      }, "Category Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        onChange: this.onChangeCategoryName,
+        value: this.state.category_name,
+        type: "text",
+        className: "form-control",
+        id: "category_name",
+        placeholder: "Enter Category Name"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "submit",
+        className: "btn btn-primary"
+      }, "Save")));
+    }
+  }]);
+
+  return Edit;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+/* harmony default export */ __webpack_exports__["default"] = (Edit);
+
+/***/ }),
+
 /***/ "./resources/assets/js/components/category/Index.js":
 /*!**********************************************************!*\
   !*** ./resources/assets/js/components/category/Index.js ***!
@@ -64050,7 +64235,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 /* harmony import */ var _Add__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Add */ "./resources/assets/js/components/category/Add.js");
-/* harmony import */ var _Listing__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Listing */ "./resources/assets/js/components/category/Listing.js");
+/* harmony import */ var _Edit__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Edit */ "./resources/assets/js/components/category/Edit.js");
+/* harmony import */ var _Listing__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Listing */ "./resources/assets/js/components/category/Listing.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64068,6 +64254,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -64100,11 +64287,15 @@ function (_Component) {
       }, "Add"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/category",
-        component: _Listing__WEBPACK_IMPORTED_MODULE_3__["default"]
+        component: _Listing__WEBPACK_IMPORTED_MODULE_4__["default"]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
         exact: true,
         path: "/category/add",
         component: _Add__WEBPACK_IMPORTED_MODULE_2__["default"]
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+        exact: true,
+        path: "/category/edit/:id",
+        component: _Edit__WEBPACK_IMPORTED_MODULE_3__["default"]
       }))));
     }
   }]);
@@ -64129,6 +64320,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -64146,6 +64338,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -64227,10 +64420,10 @@ function (_Component) {
           onClick: _this4.onDelete.bind(_this4, category.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "fa fa-times"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
           title: "edit",
           className: "btn btn-info mx-1 my-2",
-          onClick: _this4.onEdit.bind(_this4, category.id)
+          to: "/category/edit/".concat(category.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "fa fa-edit"
         })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import Add from "./Add";
+import Edit from "./Edit";
 import Listing from "./Listing";
 
 /**
@@ -20,6 +21,7 @@ export class Index extends Component {
             </Link>
             <Route exact={true} path="/category" component={Listing} />
             <Route exact={true} path="/category/add" component={Add} />
+            <Route exact={true} path="/category/edit/:id" component={Edit} />
           </div>
         </Router>
       </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 /**
  * Listing
  */
@@ -56,13 +56,13 @@ export class Listing extends Component {
                   >
                     <span className="fa fa-times" />
                   </button>
-                  <button
+                  <Link
                     title="edit"
                     className="btn btn-info mx-1 my-2"
-                    onClick={this.onEdit.bind(this, category.id)}
+                    to={`/category/edit/${category.id}`}
                   >
                     <span className="fa fa-edit" />
-                  </button>
+                  </Link>
                   <button
                     title="view"
                     className="btn btn-success mx-1 my-2"

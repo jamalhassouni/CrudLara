@@ -17,11 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::group(['namespace' => 'Api'], function () {
+    Route::get('/category', 'CategoryController@index');
 
-Route::get('/category', 'CategoryController@index');
+    Route::post('/category/store', 'CategoryController@store');
 
-Route::post('/category/store', 'CategoryController@store');
+    Route::delete('/category/delete/{id}', 'CategoryController@destroy');
 
-Route::delete('/category/delete/{id}', 'CategoryController@destroy');
-
+    Route::get('/category/edit/{id}', 'CategoryController@edit');
+    Route::put('/category/update/{id}', 'CategoryController@update');
 });

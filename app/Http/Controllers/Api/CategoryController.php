@@ -71,7 +71,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return $category;
     }
 
     /**
@@ -83,7 +84,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category = Category::find($id);
+        $validator = Validator::make($request->all(), [
+         'category_name' => 'required|max:255',
+     ]);
+        if ($validator->fails()) {
+            return response(['type'=>'error','message'=>$validator->messages()]);
+        } else {
+            $category->name = $request->category_name;
+            $category->update();
+            return response(['type'=>'success','message'=>'Successfully Updated']);
+        }
     }
 
     /**
