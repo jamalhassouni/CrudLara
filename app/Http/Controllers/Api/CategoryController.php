@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $result = Category::paginate(2);
+        $result = Category::paginate(10);
 
         return response()->json($result);
     }

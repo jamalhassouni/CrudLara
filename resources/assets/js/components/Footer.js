@@ -4,7 +4,7 @@ export default class Footer extends Component {
   render() {
     return (
       <footer>
-        <div className="footer d-flex justify-content-between  mt-5">
+        <div className="footer  mt-5">
           <div className="container">
             <div className="ikonlar">
               <a href="#">
