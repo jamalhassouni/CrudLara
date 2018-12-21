@@ -88,9 +88,6 @@ export class Listing extends Component {
                     >
                       <span className="fa fa-edit" />
                     </Link>
-                    <button title="view" className="btn btn-success mx-1 my-2">
-                      <span className="fa fa-eye" />
-                    </button>
                   </td>
                 </tr>
               );
