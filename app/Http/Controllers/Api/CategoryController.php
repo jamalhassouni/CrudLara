@@ -86,12 +86,14 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $validator = Validator::make($request->all(), [
-         'category_name' => 'required|max:255',
+         'category_name' => 'required|max:20|string',
+         'category_status' => 'required|integer',
      ]);
         if ($validator->fails()) {
             return response(['type'=>'error','message'=>$validator->messages()]);
         } else {
             $category->name = $request->category_name;
+            $category->active = $request->category_status;
             $category->update();
             return response(['type'=>'success','message'=>'Successfully Updated']);
         }
