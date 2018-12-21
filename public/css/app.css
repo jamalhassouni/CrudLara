@@ -11,7 +11,7 @@
   --blue: #3490dc;
   --indigo: #6574cd;
   --purple: #9561e2;
-  --pink: #f66D9b;
+  --pink: #f66d9b;
   --red: #e3342f;
   --orange: #f6993f;
   --yellow: #ffed4a;
@@ -545,7 +545,7 @@ mark,
 
 code {
   font-size: 87.5%;
-  color: #f66D9b;
+  color: #f66d9b;
   word-break: break-word;
 }
 
@@ -16099,16 +16099,22 @@ readers do not read off random characters that represent icons */
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.close {
+  position: absolute;
+  right: 8px;
+  top: 0;
+}
+
 .footer {
   background: #343a40;
+  color: #fff;
   padding: 60px 0;
-  color: #FFF;
   text-align: center;
 }
 
 .footer .footer h1 {
-  font-weight: 600;
   font-size: 16px;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
@@ -16117,7 +16123,7 @@ readers do not read off random characters that represent icons */
 }
 
 .footer .footer ul li a {
-  color: #FFF;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -16126,8 +16132,8 @@ readers do not read off random characters that represent icons */
 }
 
 .ikonlar .fab {
+  color: #adadad;
   font-size: 30px;
   padding: 10px;
-  color: #adadad;
 }
 

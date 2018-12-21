@@ -64280,9 +64280,11 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Edit).call(this, props));
     _this.onChangeCategoryName = _this.onChangeCategoryName.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onChangeCategoryStatus = _this.onChangeCategoryStatus.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.onSubmit = _this.onSubmit.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     _this.state = {
       category_name: "",
+      category_status: "",
       messages: {},
       showError: false
     };
@@ -64297,7 +64299,8 @@ function (_Component) {
       // Fetch data from api
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("http://localhost:8000/api/category/edit/".concat(this.props.match.params.id)).then(function (response) {
         _this2.setState({
-          category_name: response.data.name
+          category_name: response.data.name,
+          category_status: response.data.active
         });
       });
     }
@@ -64312,6 +64315,13 @@ function (_Component) {
       this.setState({
         category_name: e.target.value
       });
+    }
+  }, {
+    key: "onChangeCategoryStatus",
+    value: function onChangeCategoryStatus(e) {
+      this.setState({
+        category_status: e.target.value
+      });
     } // handle on submit event
 
   }, {
@@ -64321,9 +64331,12 @@ function (_Component) {
 
       e.preventDefault();
       var category = {
-        category_name: this.state.category_name
+        category_name: this.state.category_name,
+        category_status: this.state.category_status
       };
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("http://localhost:8000/api/category/update/".concat(this.props.match.params.id), category).then(function (res) {
+        console.log(res.data);
+
         if (res.data.type === "success") {
           _this3.setState({
             showError: true,
@@ -64370,8 +64383,14 @@ function (_Component) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
             className: "alert alert-danger",
             role: "alert"
-          }, this.state.messages.message.category_name.map(function (err) {
-            return err;
+          }, this.state.messages.message.category_name && this.state.messages.message.category_name.map(function (err, index) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+              key: "errName-".concat(index)
+            }, err);
+          }), this.state.messages.message.category_status && this.state.messages.message.category_status.map(function (err, index) {
+            return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+              key: "errStatus-".concat(index)
+            }, err);
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
             onClick: this.handleClose.bind(this),
             type: "button",
@@ -64402,7 +64421,22 @@ function (_Component) {
         className: "form-control",
         id: "category_name",
         placeholder: "Enter Category Name"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        htmlFor: "status"
+      }, "Status"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        value: this.state.category_status,
+        id: "status",
+        onChange: this.onChangeCategoryStatus,
+        className: "form-control"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: ""
+      }, "default"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "1"
+      }, "Active"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "0"
+      }, "Inctive"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         type: "submit",
         className: "btn btn-primary"
       }, "Save")));
@@ -64643,11 +64677,6 @@ function (_Component) {
           to: "/category/edit/".concat(category.id)
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
           className: "fa fa-edit"
-        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-          title: "view",
-          className: "btn btn-success mx-1 my-2"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "fa fa-eye"
         }))));
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "d-flex justify-content-center"

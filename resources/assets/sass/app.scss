@@ -1,44 +1,51 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-// Variables
-@import 'variables';
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
-// Fontawesome
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/brands';
+@import url("https://fonts.googleapis.com/css?family=Nunito"); // Variables
+@import "variables"; // Bootstrap
+@import "~bootstrap/scss/bootstrap"; // Fontawesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
 
 .navbar-laravel {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  background-color: $white;
+  box-shadow: 0 2px 4px $boxshadow;
+}
+
+.close {
+  position: absolute;
+  right: 8px;
+  top: 0;
 }
 
 .footer {
-    background: #343a40;
-    padding: 60px 0;
-    color: #FFF;
-    text-align: center;
-    .footer h1 {
-        font-weight: 600;
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-    .footer ul li {
-        margin: 10px 0;
-    }
-    .footer ul li a {
-        color: #FFF;
-        text-decoration: none;
-    }
-    .footer ul li a:hover {
-        color: #08ad9e;
-    }
+  background: $dark;
+  color: $white;
+  padding: 60px 0;
+  text-align: center;
+
+  .footer h1 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .footer ul li {
+    margin: 10px 0;
+  }
+
+  .footer ul li a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  .footer ul li a:hover {
+    color: $footer-hover;
+  }
 }
 
 .ikonlar .fab {
-    font-size: 30px;
-    padding: 10px;
-    color: #adadad;
+  color: $socialicon;
+  font-size: 30px;
+  padding: 10px;
 }
