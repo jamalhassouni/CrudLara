@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use Validator;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Category;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Validator;
 
 class CategoryController extends Controller
 {
@@ -40,15 +40,15 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-           'category_name' => 'required|max:255',
-       ]);
+            'category_name' => 'required|max:255',
+        ]);
         if ($validator->fails()) {
-            return response(['type'=>'error','message'=>$validator->messages()]);
+            return response(['type' => 'error', 'message' => $validator->messages()]);
         } else {
             Category::create([
-            'name'=> $request->category_name,
-        ]);
-            return response(['type'=>'success','message'=>'Successfully added']);
+                'name' => $request->category_name,
+            ]);
+            return response(['type' => 'success', 'message' => 'Successfully added']);
         }
     }
 
@@ -86,16 +86,16 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         $validator = Validator::make($request->all(), [
-         'category_name' => 'required|max:20|string',
-         'category_status' => 'required|integer',
-     ]);
+            'category_name' => 'required|max:20|string',
+            'category_status' => 'required|integer',
+        ]);
         if ($validator->fails()) {
-            return response(['type'=>'error','message'=>$validator->messages()]);
+            return response(['type' => 'error', 'message' => $validator->messages()]);
         } else {
             $category->name = $request->category_name;
             $category->active = $request->category_status;
             $category->update();
-            return response(['type'=>'success','message'=>'Successfully Updated']);
+            return response(['type' => 'success', 'message' => 'Successfully Updated']);
         }
     }
 
@@ -107,11 +107,11 @@ class CategoryController extends Controller
      */
     public function destroy($id = null)
     {
-        if ($id !=null) {
+        if ($id != null) {
             $category = Category::find($id);
             $category->delete();
             $data = Category::all();
-            return response(['type' => 'success','message'=>'The Category has successfully deleted','data'=>$data]);
+            return response(['type' => 'success', 'message' => 'The Category has successfully deleted', 'data' => $data]);
         }
     }
 }
