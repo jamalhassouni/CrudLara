@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import * as action from "../actions";
+import Error from "./Error";
+
 /**
  * Add
  */
@@ -8,11 +12,6 @@ export class Add extends Component {
     super(props);
     this.onChangeCategoryName = this.onChangeCategoryName.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.state = {
-      category_name: "",
-      messages: {},
-      showError: false
-    };
   }
 
   /**
@@ -21,30 +20,21 @@ export class Add extends Component {
    */
 
   onChangeCategoryName(e) {
-    this.setState({
-      category_name: e.target.value
-    });
+    this.props.addCategory(e.target.value);
   }
   // handle on submit event
   onSubmit(e) {
     e.preventDefault();
     const category = {
-      category_name: this.state.category_name
+      category_name: this.props.category_name
     };
     axios
       .post("http://localhost:8000/api/category/store", category)
       .then(res => {
         if (res.data.type === "success") {
-          this.setState({
-            showError: true,
-            category_name: "",
-            messages: res.data
-          });
+          this.props.addCategory("", true, res.data);
         } else {
-          this.setState({
-            showError: true,
-            messages: res.data
-          });
+          this.props.addCategory(this.props.category_name, true, res.data);
         }
       })
       .catch(err => {
@@ -52,61 +42,16 @@ export class Add extends Component {
       });
   }
 
-  // handle on click close alert event
-  handleClose() {
-    this.setState({
-      showError: false
-    });
-  }
-  // handle errors messages
-  handleErrors() {
-    switch (this.state.messages.type) {
-      case "success":
-        return (
-          <div className="alert alert-success " role="alert">
-            {this.state.messages.message}
-            <button
-              onClick={this.handleClose.bind(this)}
-              type="button"
-              className="close"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        );
-        break;
-      case "error":
-        return (
-          <div className="alert alert-danger" role="alert">
-            {this.state.messages.message.category_name.map(err => {
-              return err;
-            })}
-            <button
-              onClick={this.handleClose.bind(this)}
-              type="button"
-              className="close"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        );
-        break;
-      default:
-        return;
-    }
-  }
   render() {
     return (
       <div>
-        {this.state.showError && this.handleErrors()}
+        <Error />
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
             <label htmlFor="category_name">Category Name</label>
             <input
               onChange={this.onChangeCategoryName}
-              value={this.state.category_name}
+              value={this.props.category_name}
               type="text"
               className="form-control"
               id="category_name"
@@ -122,4 +67,15 @@ export class Add extends Component {
   }
 }
 
-export default Add;
+const mapStateToProps = state => {
+  return {
+    category_name: state.categories.category_name,
+    showError: state.categories.showError,
+    messages: state.categories.messages
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  action
+)(Add);

@@ -17,7 +17,10 @@
   right: 8px;
   top: 0;
 }
-
+.alert p {
+  margin-top: 6px;
+  margin-bottom: 0;
+}
 .footer {
   background: $dark;
   color: $white;
