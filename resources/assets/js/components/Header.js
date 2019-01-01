@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, Route,Switch } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
+import Error404 from "./Error404";
 import Category from "./category/Index";
 /**
  * Header
@@ -61,12 +62,15 @@ export default class Header extends Component {
             </form>
           </div>
         </nav>
+        <Switch>
 
         <Route exact={true} path="/" component={Home} />
         <Route exact={true} path="/about" component={About} />
         <Route exact={true} path="/category" component={Category} />
         <Route exact={true} path="/category/add" component={Category} />
         <Route exact={true} path="/category/edit/:id" component={Category} />
+        <Route exact={true} path="/*" component={Error404} />
+        </Switch>
       </div>
     );
   }
